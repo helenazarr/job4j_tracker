@@ -5,9 +5,10 @@ import java.time.format.DateTimeFormatter;
 
 public class StartUI {
     public static void main(String[] args) {
-        Item item = new Item();
-        LocalDateTime currentDateTime = item.getCreated();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        System.out.println(currentDateTime.format(formatter));
+        Item item = new Item(1, "A1");
+        Tracker tracker = new Tracker();
+        tracker.add(item);
+        Item tmpItem = tracker.findById(1);
+        System.out.println(tmpItem.getId() + " - " + tmpItem.getName());
     }
 }
