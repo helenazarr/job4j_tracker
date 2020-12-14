@@ -15,7 +15,7 @@ public class ValidateInput implements Input {
     }
 
     @Override
-    public int askInt(String question) {
+    public int askInt(String question) throws IllegalArgumentException{
         boolean invalid = true;
         int value = -1;
         do {
@@ -26,6 +26,9 @@ public class ValidateInput implements Input {
                 out.println("Please enter validate data again.");
             }
         } while (invalid);
+        if (value < 0) {
+            throw new IllegalArgumentException("Value should be positive");
+        }
         return value;
     }
 }
